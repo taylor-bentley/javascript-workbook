@@ -37,12 +37,11 @@ class Ship {
     this.name = name;
     this.type = type;
     this.ability = ability;
-    //this.crew = null;
+    //this.crew = emptyCrew=[];
     this.missionStatement=(group)=>{
-    this.group = group;
-    group.transformerList.push(this);
+  //if crewMember job matches up with ship type then the crewmember is able to board the ship
+
     //console.log(this)
-    //console.log(transformerGroup, 'Here we are')
     };
   }
 }
