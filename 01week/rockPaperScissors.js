@@ -7,10 +7,38 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+'use strict';
 
-function rockPaperScissors(hand1, hand2) {
+function rockPaperScissors(handOne, handTwo) {
 
-  // Write code here
+const hand1 = handOne.toLowerCase().trim();
+const hand2 = handTwo.toLowerCase().trim();
+//compare hand 1 with hand2 to look for a tie
+
+//compare hand1 with hand2 to look for a winner
+
+//rock beats scissors; scissors beats paper; paper beats rock
+
+  if (hand1 === hand2) {
+
+    return("It's a tie!");
+
+    } else if (hand1 === 'rock'){
+
+      return hand2 === 'paper' ? "Hand two wins!" : "Hand one wins!";
+
+    } else if (hand1 === 'paper') {
+
+      return hand2 === 'scissors' ? "Hand two wins!" : "Hand one wins!";
+
+    } else if (hand1 === 'scissors'){
+
+      return hand2 === 'rock' ? "Hand two wins!" : "Hand one wins!";
+
+    } else {
+
+      return ("What are you saying? You have to type 'rock','paper', or 'scissors'!")
+  }
 
 }
 
