@@ -15,31 +15,28 @@ class CrewMember {
     this.job = job;
     this.specialSkill = specialSkill;
     this.ship = null;
-    this.enterShip = () => {
-    //console.log(this.ship);
+    this.enterShip = (ship) => {
+      console.log(`from line 20 ${ship}`);
+      this.ship = ship;
+      return ship.crew.push(this);
     };
   }
 }
 
-const crewMember1 = new CrewMember('Rick Martinez','pilot','chemistry');
-//console.log(crewMember1);
-
-const crewMember2 = new CrewMember('Commander Lewis', 'commander', 'geology');
-//console.log(crewMember2)
-
-const mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
-//console.log(mav)
-
-const hermes = new Ship('Hermes', 'Main Ship', 'Interplanetary Space Travel');
 
 class Ship {
-  constructor(name, type, ability, crew){
+  constructor(name, type, ability){
     this.name = name;
     this.type = type;
     this.ability = ability;
-    //this.crew = emptyCrew=[];
-    this.missionStatement=(group)=>{
-  //if crewMember job matches up with ship type then the crewmember is able to board the ship
+    this.crew = [];
+    this.missionStatement=()=>{
+      if(this.crew.length >= 1){
+        return this.ability;
+      }else{
+        return "Can't perform a mission yet."
+      }
+      //if crewMember job matches up with ship type then the crewmember is able to board the ship
 
     //console.log(this)
     };
