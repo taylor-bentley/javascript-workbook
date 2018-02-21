@@ -22,21 +22,33 @@ function printBoard() {
   console.log('  ---------');
   console.log('2 ' + board[2].join(' | '));
 }
+const checkEveryRowForPlayerTurn = true;
+  ley rowIsPlayerTurn = true;
+  row.forEach(cell =>{
+  if(cell !== playerTurn){
+    rowIsPlayerTurn = false;
+  }
+ });
+  return rowIsPlayerTurn
+}
+const horizontalWin = () => {
 
-
-function horizontalWin() {
-  if([0][0] === playerTurn && [0][1] === playerTurn && [0][2] === playerTurn){
+  return checkEveryRowForPlayerTurn(board[0]) ||
+  checkEveryRowForPlayerTurn(board[1]) || 
+  checkEveryRowForPlayerTurn(board[2]);
+}
+  if(board[0][0] === playerTurn && board[0][1] === playerTurn && board[0][2] === playerTurn){
     return true;
   }
-  if([1][0] === playerTurn && [1][1] === playerTurn && [1][2] === playerTurn){
+  if(board[1][0] === playerTurn && board[1][1] === playerTurn && board[1][2] === playerTurn){
     return true;
   }
-  if([2][0] === playerTurn && [2][1] === playerTurn && [2][2] === playerTurn){
+  if(board[2][0] === playerTurn && board[2][1] === playerTurn && board[2][2] === playerTurn){
     return true;
   }
 }
 
-function verticalWin() {
+const verticalWin() {
   if([0][0] === playerTurn && [1][0] === playerTurn && [2][0] === playerTurn){
     return true;
   }
@@ -48,7 +60,7 @@ function verticalWin() {
   }
 }
 
-function diagonalWin() {
+const diagonalWin() {
   if([0][0] === playerTurn && [1][1] === playerTurn && [2][2] === playerTurn){
     return true;
   }
