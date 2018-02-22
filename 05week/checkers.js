@@ -9,7 +9,8 @@ const rl = readline.createInterface({
 
 
 function Checker() {
-  // Your code here
+  //this is the class where you will create the checker pieces--the symbol will be
+  //this.symbol = "B";
 }
 
 function Board() {
@@ -19,9 +20,10 @@ function Board() {
     // loop to create the 8 rows
     for (let row = 0; row < 8; row++) {
       this.grid[row] = [];
-      // push in 8 columns of nulls
+      // push in 8 columns of nulls--where we will put the pieces
       for (let column = 0; column < 8; column++) {
-        this.grid[row].push(null);
+        const checker = new Checker();
+        this.grid[row].push(checker);
       }
     }
   };
@@ -60,7 +62,7 @@ function Game() {
 
   this.start = function() {
     this.board.createGrid();
-    // Your code here
+    // Game is a class. We will add method game.moveChecker().
   };
 }
 
@@ -87,6 +89,7 @@ if (typeof describe === 'function') {
     });
     it('board should have 24 checkers', () => {
       assert.equal(game.board.checkers.length, 24);
+      //we will start will 24 pieces, 12 for each player
     });
   });
 
