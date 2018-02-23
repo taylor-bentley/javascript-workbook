@@ -11,10 +11,12 @@ const rl = readline.createInterface({
 function Checker() {
   //this is the class where you will create the checker pieces--the symbol will be
   //this.symbol = "B";
+  //possibly call the createCheckers function??? 
 }
 
 function Board() {
   this.grid = [];
+  this.checker = [];
   // creates an 8x8 array, filled with null values
   this.createGrid = function() {
     // loop to create the 8 rows
@@ -53,6 +55,17 @@ function Board() {
     }
     console.log(string);
   };
+
+  this.createCheckers = () => {
+    //loop through the 8 rows
+    for (let row = 0, row <8, row++) {
+      //ignore empty rows
+      if (row === 3 || row ===4) continue;
+      //loop through the 8 columns
+      for (let col = 0; col < 8; col++) {
+
+    }
+  }
 
   // Your code here
 }
