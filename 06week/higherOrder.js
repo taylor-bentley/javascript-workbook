@@ -2,6 +2,8 @@
 
 const assert = require('assert');
 
+const colors = ['yellow', 'orange', 'black', 'white', 'blue', 'green'];
+
 function forEach(arr, callback) {
   // Your code here
 }
