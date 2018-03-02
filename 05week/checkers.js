@@ -87,25 +87,25 @@ class Board {
       const blackCheckers = [
         [0, 1], [0, 3], [0, 5],[0, 7],
         [1, 0], [1, 2], [1, 4],[1, 6],
-        [2, 1], [2, 3], [2, 5],[2, 7]
+        [2, 1], [2, 3], [2, 5],[2, 7],
       ];
       //Black checkers.
       const bChecker = new Checker
-      blackCheckers.forEach((checker) => {
-       this.checkers.push(checker)
-       this.grid[checker[0]][checker[1]] = bChecker
+      blackCheckers.forEach((piece) => {
+       this.checkers.push(piece)
+       this.grid[piece[0]][piece[1]] = bChecker
       })
 
       const whiteCheckers = [
         [5, 0], [5, 2], [5, 4],[5, 6],
         [6, 1], [6, 3], [6, 5],[6, 7],
-        [7, 0], [7, 2], [7, 4],[7, 6]
+        [7, 0], [7, 2], [7, 4],[7, 6],
       ];
       //White checkers.
       const wChecker = new Checker
-      whiteCheckers.forEach((checker) => {
-       this.checkers.push(checker)
-       this.grid[checker[0]][checker[1]] = wChecker
+      whiteCheckers.forEach((piece) => {
+       this.checkers.push(piece)
+       this.grid[piece[0]][piece[1]] = wChecker
       })
     //Need to print them out onto the grid.
     }
@@ -119,11 +119,11 @@ class Game {
     this.board = new Board;
     //This will start the black player's turn.
     this.turn = 'black';
-  //This starts the game.
-  start = () => {
-    this.board.createGrid();
-    this.board.createCheckers();
-  }
+    //This starts the game.
+    this.start = () => {
+      this.board.createGrid();
+      this.board.createCheckers();
+    }
     this.moveChecker = (startingPoint, endingPoint) => {
       const startHere = startingPoint.split('');
       const endHere = endingPoint.split('');
