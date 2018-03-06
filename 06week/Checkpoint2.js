@@ -8,8 +8,9 @@ const nums = strNums.join();
 console.log(nums);
 
 // Find the sum of the even values
+//had to filter even numbers first
 const findEvens = strNums.filter(num => num % 2 ===0);
-
+//adding the total of the even values through reduce
 const sumEvens = findEvens.reduce((total, num) => {
   return [(+total) + (+num)];
 });
@@ -17,3 +18,28 @@ const sumEvens = findEvens.reduce((total, num) => {
 console.log(sumEvens);
 
 // Return an object with counts for each number
+// {
+//   0: 0, <== increment these counts
+//   1: 0,
+//   2: 0,
+//   ...
+//   8: 0,
+//   9: 0
+// }
+
+//return an object after manipulating the strNums array,
+//for each is indicated, so I used that function
+const numCount = {};
+nums.forEach((num) => {
+  numCount[num] = nums.filter(x => x === num).length;
+});
+
+console.log(numCount)
+
+// Find the index of the first "Austin" value (the value plus its index equals 512)
+
+const atxIdx = nums.findIndex((value, index) => {
+  return value + index === 512;
+});
+
+console.log(`index: ${atxIdx}, value: ${nums[atxIdx]}`);
