@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 import './App.css';
 
 class App extends Component {
@@ -7,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       inputValue: '',
+      list: [],
     }
   }
 
@@ -15,8 +18,25 @@ handleInputChange = (e) => {
 }
 
 
-  render() {
-    return (
+render() {
+  const style = {
+    margin: 12,
+  };
+
+  const RaisedButtonExampleSimple = () => (
+    <div>
+      <RaisedButton label="Default" style={style} />
+      <RaisedButton label="Primary" primary={true} style={style} />
+      <RaisedButton label="Secondary" secondary={true} style={style} />
+      <RaisedButton label="Disabled" disabled={true} style={style} />
+      <br />
+      <br />
+      <RaisedButton label="Full width" fullWidth={true} />
+    </div>
+  );
+
+  return (
+    <MuiThemeProvider>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -25,10 +45,11 @@ handleInputChange = (e) => {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <input></input><button>Submit</button>
+        {RaisedButtonExampleSimple()}
       </div>
-    );
-  }
+    </MuiThemeProvider>
+  );
+}
 }
 
 export default App;
