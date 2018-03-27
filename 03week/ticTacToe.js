@@ -23,7 +23,7 @@ function printBoard() {
   console.log('2 ' + board[2].join(' | '));
 }
 const checkEveryRowForPlayerTurn = true;
-  ley rowIsPlayerTurn = true;
+  let rowIsPlayerTurn = true;
   row.forEach(cell =>{
   if(cell !== playerTurn){
     rowIsPlayerTurn = false;
@@ -34,7 +34,7 @@ const checkEveryRowForPlayerTurn = true;
 const horizontalWin = () => {
 
   return checkEveryRowForPlayerTurn(board[0]) ||
-  checkEveryRowForPlayerTurn(board[1]) || 
+  checkEveryRowForPlayerTurn(board[1]) ||
   checkEveryRowForPlayerTurn(board[2]);
 }
   if(board[0][0] === playerTurn && board[0][1] === playerTurn && board[0][2] === playerTurn){
@@ -68,7 +68,7 @@ const diagonalWin() {
     return true;
   }
 }
-
+//Check to see if the user has won
 function checkForWin() {
   if (horizontalWin()) {
     console.log( 'horizontal win');
@@ -87,6 +87,7 @@ function checkForWin() {
 function ticTacToe(row, column) {
   if (board[row][column] === ' ') {
     board[row][column] = playerTurn;
+  //Resets the board
   if (checkForWin()){
     board = [
       [' ', ' ', ' '],
