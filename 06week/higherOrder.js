@@ -2,27 +2,51 @@
 
 const assert = require('assert');
 
-const colors = ['yellow', 'orange', 'black', 'white', 'blue', 'green'];
+const forEach = (arr, callback) => {
+  for (let i = 0, i < arr.length; i++) {
+  callback();
+  }
+};
 
-function forEach(arr, callback) {
-  // Your code here
-}
+const map = (arr, callback) => {
+  const changed = []
+  // console.log(arr)
+  arr.forEach((item) => {
+    callback(item);
+    changed.push(callback(item));
+    console.log(callback(item));
+  });
+  return formatted;
+};
 
-function map(arr, callback) {
-  // Your code here
-}
+const filter = (arr, callback) => {
+  const newFilter = [];
+  for (let j = 0; j < arr.length; j++) {
+    if (arr[j] % 2 === 0) {
+    newFilter.push(arr[j]);
+    }
+  }
+  return newFilter;
+};
 
-function filter(arr, callback) {
-  // Your code here
-}
+const some = (arr, callback) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i])) {
+     return true
+    }
+  }
+ return false;
+};
 
-function some(arr, callback) {
-  // Your code here
-}
 
 function every(arr, callback) {
-  // Your code here
-}
+  for (let i=0; i< arr.length; i++){
+    if (!callback(arr[i])){
+      return false
+    }
+  }
+  return true;
+};
 
 if (typeof describe === 'function') {
 
