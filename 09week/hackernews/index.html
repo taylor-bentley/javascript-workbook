@@ -10,5 +10,26 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.0/react.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.0/react-dom.js"></script>
   <script type="text/babel" src="./script.js"></script>
+  <ul id="top-stories"></ul>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty').then((res) => {
+      res.json().then((storyIds) => {
+        storyIds.slice(0, 50).forEach((storyId) => {
+          fetch(`https://hacker-news.firebaseio.com/v0/item/${storyId}.json?print=pretty`).then((res) => {
+            res.json().then((story) => {
+              const li = document.createElement('li');
+              const a = document.createElement('a');
+              a.href = story.url;
+              a.innerText = story.title;
+              li.appendChild(a);
+              document.getElementById('top-stories').appendChild(li);
+            });
+          });
+        });
+      });
+    });
+  });
+  </script>
 </body>
 </html>
