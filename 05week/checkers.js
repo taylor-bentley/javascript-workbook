@@ -7,28 +7,6 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-  //I will need to put coordinates (column, row) for a starting and ending postion.
-function moveChecker(column,row){
-  this.column = column;
-  this.row = row;
-  }
-  return "Black piece moves first"
-  //This checks for a legal move, then uses if statements. Only diagonal, forward, and into an open space(empty string/null) are allowed. I need to make sure that you cannot jump over your own piece, and that the piece is removed from the board once it has been jumped over.
-function isLegal() {
-  //Write something that checks if it can jump anywhere on the board.
-  //Write something that checks if it can jump to a specific place on the board.
-  //Check to see if it is in bounds.
-}
-  //If the moveChecker function moves over the opponent's piece, remove the piece and use splice to move it.
-function removePiece() {
-
-}
-  //This checks for no valid moves remaining, then uses if statements.
-function checkForWin() {
-
-}
-
-//Is this the class where you will create the checker pieces??
 class Checker {
   constructor(symbol, color) {
     if (color==='black') {
@@ -53,6 +31,7 @@ class Board {
         this.grid[row] = [];
         //This will push in 8 columns of nulls--which is where we will put the pieces.
         for (let column = 0; column < 8; column++) {
+          //not sure if I should leave the null or not
           this.grid[row].push(checker);
         }
       }
@@ -124,10 +103,46 @@ class Game {
       this.board.createGrid();
       this.board.createCheckers();
     }
-    this.moveChecker = (startingPoint, endingPoint) => {
-      const startHere = startingPoint.split('');
-      const endHere = endingPoint.split('');
+    this.moveChecker = (start, end) => {
+      const startRow = parseInt(start.charAt(0));
+      const startColumn = parseInt(start.charAt(1));
+      const endRow = parseInt(end.charAt(0));
+      const endColumn = parseInt(end.charAt(1));
+
+      if (isLegalInput() && isLegalMove() && this.board.grid[endRow][endColumn]=== null) {
+        this.board.grid[endRow][endColumn] = this.board.grid[startRow][startColumn];
+        this.board.grid[startRow][startColumn] = null;
+        if (Math.abs(endRow - startRow) === 2) {
+          let jumpedRow = endRow - startRow > 0 ? startRow + 1 : endRow + 1;
+          let jumpedColumn = endColumn - startColumn > 0 ? startColumn + 1 : endColumn + 1;
+          this.board.grid[jumpedRow][jumpedColumn] = null;
+          this.board.checkers.pop();
+        }
+      }else{
+        console.log('Illegal Move');
+      }
     }
+  }
+}
+//Write something that checks if it can jump anywhere on the board.
+//Write something that checks if it can jump to a specific place on the board.
+//Check to see if it is in bounds.
+const isLegalInput = () => {
+  const startIsGood = (startRow >= 0 && startRow < 8) && (startColumn >= 0 && startColumn < 8);
+  const endIsGood = (endRow >= 0 && endRow < 8) && (endColumn >= 0 && endColumn < 8);
+  return startIsGood && endIsGood;
+}
+//This checks for a legal move, then uses if statements. Only diagonal, forward, and into an open space(empty string/null) are allowed. I need to make sure that you cannot jump over your own piece, and that the piece is removed from the board once it has been jumped over.
+const isLegalMove = () => {
+  const goodRowValue = (Math.abs(endRow - startRow));
+  const goodColumnValue = (Math.abs(endColumn - startColumn));
+
+  if (goodRowValue === 1 && goodColumnValue === 1){
+    return true;
+  } else if  (goodRowValue === 2 && goodColumnValue === 2) {
+    return true;
+  } else{
+    return false;
   }
 }
 function getPrompt() {
