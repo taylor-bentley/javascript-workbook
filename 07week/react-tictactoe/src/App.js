@@ -23,9 +23,9 @@ class App extends Component {
       return;
     }
 
-    const currentGameBoard = this.state.gameBoard;
-    currentGameBoard.splice (loc, 1, this.state.turn);
-    this.setState({gameBoard: currentGameBoard});
+    const currentBoard = this.state.gameBoard;
+    currentBoard.splice (loc, 1, this.state.turn);
+    this.setState({gameBoard: currentBoard});
 
     const topRow = this.state.gameBoard[0] + this.state.gameBoard[1] + this.state.gameBoard[2];
       if (topRow.match (/XXX|OOO/)){
@@ -96,19 +96,19 @@ class App extends Component {
         <div className="menu">
           <h1>Tic-Tac-Toe</h1>
           <Announcement winner={this.state.winner}/>
-          </div>
+        </div>
           {this.state.gameBoard.map(function(value, i){
-          return(
-            <Tile
-            key={i}
-            location={i}
-            value={value}
-            updateBoard={this.updateBoard.bind(this)}
-            turn = {this.state.turn}/>
-          )
+            return(
+              <Tile
+              key={i}
+              loc={i}
+              value={value}
+              updateBoard={this.updateBoard.bind(this)}
+              turn = {this.state.turn}/>
+            );
           }.bind(this))}
           <ResetButton reset={this.resetBoard.bind(this)}/>
-        </div>
+      </div>
     );
   }
 }
