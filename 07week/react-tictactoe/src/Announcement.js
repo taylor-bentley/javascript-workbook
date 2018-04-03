@@ -5,7 +5,7 @@ export default class Announcement extends Component{
   render (){
     return (
       <div className={this.props.winner ? 'visible' : 'hidden'}>
-        <h2>You won! {this.props.winner}! </h2>
+        <h2>Whoop! You are the winner! {this.props.winner}! </h2>
       </div>
 
     )
